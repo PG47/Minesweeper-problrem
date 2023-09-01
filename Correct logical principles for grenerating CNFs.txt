@@ -1,0 +1,32 @@
+1. Clue constraints:
+For each cell with a clue number(k)in the matrix,  create a clause that state the number of adjacent mines must be equal to N. 
+For example, if a cell has a clue of "2" and has three adjacent covered cells
+the clause would be (C1 OR C2 OR C3), where C1, C2, and C3 represent the covered cells adjacent to the clue cell. 
+
+
+2. Non-mine contrainsts:
+For each covered cell in the matrix, create a clause that states the cell cannot contain a mine.
+This is represented as a simple negation of the cell, like ¬C, where ¬ represents logical negation.
+example: a cell that contain a clude number cannot containt a mine itselft
+
+3. Mine contraints:
+For each mine cell in the matrix, create a clause that states the cell must contain a mine. 
+This is represented as a positive literal, like M, where M represents the mine cell.
+Example if the cell C1 have clue 3 and it only have C2,C3,C4 as it neighbors then => conclude that C2,C3,C4 are 100% mines
+
+4. Exclusivity contraints:
+For each pair of adjacent cells(C1 and C2), create a clause that states if C1 have a mine then C2 can't have a mine, and vice versa.
+This is represented as (¬C1 OR ¬C2) to ensure that mines cannot appear in both cells at the same time.
+
+5. Uniqueness Constraints:
+For each set of cells with a common neighbor, create a clause that enforces the uniqueness of mines among them. 
+
+For example, if cells B, C, and D have a common neighbor of cell A, and A has a clue of "1", mean that B,C,D cannot both contain more than 2 mines. 
+This is represented as (¬B OR ¬C) AND (¬B OR ¬D) and (¬C OR ¬D).
+
+Also if A has a clue is 2, mean that B,C,D cannot contain mines less than that clue number.
+This is represented as (B OR C) AND (B OR D) and (C OR D)
+
+
+6. Border Constraints:
+For cells on the border of the matrix, adjust the constraints accordingly to consider the cells that might be outside the matrix as uncovered cells.

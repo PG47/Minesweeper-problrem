@@ -1,0 +1,7 @@
+1 X X X X X X
+2 5 X 7 X X 4
+X 0 X 6 X 5 X
+2 0 X X 4 X 2
+1 X X X 5 2 1
+0 3 0 X X 3 2
+1 X 3 X 4 X X
